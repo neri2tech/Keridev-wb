@@ -10,7 +10,6 @@ interface PortfolioItem {
 
 @Component({
   selector: 'app-portfolio',
-  // Fix: Make component standalone. The 'imports' property requires this.
   standalone: true,
   templateUrl: './portfolio.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -3,7 +3,6 @@ import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-about',
-  // Fix: Make component standalone. The 'imports' property requires this.
   standalone: true,
   templateUrl: './about.component.html',
   imports: [NgOptimizedImage],

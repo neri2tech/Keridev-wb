@@ -1,16 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
 @Component({
   selector: 'app-contact',
-  // Fix: Add standalone: true. This is required for the 'imports' array and to enable proper dependency injection for FormBuilder.
   standalone: true,
   templateUrl: './contact.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule],
 })
 export class ContactComponent {
   private fb = inject(FormBuilder);

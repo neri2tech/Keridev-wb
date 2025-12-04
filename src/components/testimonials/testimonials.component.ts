@@ -8,7 +8,6 @@ interface Testimonial {
 
 @Component({
   selector: 'app-testimonials',
-  // Fix: Make component standalone, as it's used in a standalone root component.
   standalone: true,
   templateUrl: './testimonials.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

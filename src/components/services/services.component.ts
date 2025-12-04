@@ -9,14 +9,12 @@ interface Service {
 
 @Component({
   selector: 'app-services',
-  // Fix: Make component standalone, as it's used in a standalone root component.
   standalone: true,
   templateUrl: './services.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ServicesComponent {
   
-  // Fix: Use inject() instead of constructor injection for better consistency with modern Angular practices.
   private sanitizer = inject(DomSanitizer);
 
   // Using SVG paths for icons
