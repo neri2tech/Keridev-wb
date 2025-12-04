@@ -1,0 +1,25 @@
+<section class="py-20 bg-white dark:bg-slate-900">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12" appScrollAnimation>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white">Our Work</h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">A glimpse into some of the solutions we've crafted for our clients.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      @for (item of portfolioItems(); track item.title) {
+        <div appScrollAnimation class="bg-slate-50/50 dark:bg-slate-800/50 backdrop-blur-lg border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden group transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/10 dark:hover:shadow-purple-500/20">
+          <img [ngSrc]="item.image" [alt]="item.title" class="w-full h-64 object-cover" width="800" height="600">
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-2">{{ item.title }}</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">{{ item.description }}</p>
+            <div class="flex flex-wrap gap-2">
+              @for (tag of item.tags; track tag) {
+                <span class="bg-indigo-100 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 text-xs font-semibold px-2.5 py-1 rounded-full">{{ tag }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,48 @@
+<header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800">
+  <nav class="container mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <a href="#home" class="text-2xl font-bold text-slate-800 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+        KeriDev<span class="text-indigo-500">.</span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-6">
+        @for (link of navLinks; track link.path) {
+          <a [href]="link.path" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors font-medium">{{ link.label }}</a>
+        }
+        <a href="#contact" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-2 px-4 rounded-lg transition-all">
+          Book a Service
+        </a>
+        <app-theme-toggle></app-theme-toggle>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center gap-2">
+        <app-theme-toggle></app-theme-toggle>
+        <button (click)="toggleMenu()" class="text-slate-800 dark:text-white focus:outline-none">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            @if (!isMenuOpen()) {
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            } @else {
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            }
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  @if (isMenuOpen()) {
+    <div class="md:hidden bg-white dark:bg-slate-900">
+      <div class="flex flex-col items-center px-2 pt-2 pb-3 space-y-3 sm:px-3">
+        @for (link of navLinks; track link.path) {
+          <a [href]="link.path" (click)="closeMenu()" class="text-gray-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium w-full text-center">{{ link.label }}</a>
+        }
+        <a href="#contact" (click)="closeMenu()" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-2 px-4 rounded-lg transition-all w-full text-center">
+          Book a Service
+        </a>
+      </div>
+    </div>
+  }
+</header>

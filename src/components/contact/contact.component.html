@@ -1,0 +1,58 @@
+<section class="py-20 bg-slate-50 dark:bg-slate-800">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12" appScrollAnimation>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white">Get in Touch</h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">Have a project in mind? We'd love to hear about it. Let's create something amazing together.</p>
+    </div>
+    <div class="max-w-3xl mx-auto" appScrollAnimation>
+      @if (formStatus() === 'success') {
+        <div class="bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg text-center">
+          <h3 class="text-2xl font-bold text-green-500 dark:text-green-400 mb-2">Thank You!</h3>
+          <p class="text-gray-600 dark:text-gray-300">Your message has been sent successfully. We'll get back to you shortly.</p>
+        </div>
+      } @else {
+        <form [formGroup]="contactForm" (ngSubmit)="submitForm()" class="bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label for="name" class="block text-gray-600 dark:text-gray-300 font-medium mb-2">Full Name</label>
+              <input type="text" id="name" formControlName="name" class="w-full bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg py-3 px-4 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" placeholder="John Doe">
+              @if (name?.invalid && (name?.dirty || name?.touched)) {
+                <p class="text-red-500 dark:text-red-400 text-sm mt-1">Full name is required.</p>
+              }
+            </div>
+            <div>
+              <label for="email" class="block text-gray-600 dark:text-gray-300 font-medium mb-2">Email Address</label>
+              <input type="email" id="email" formControlName="email" class="w-full bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg py-3 px-4 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" placeholder="john.doe@example.com">
+               @if (email?.invalid && (email?.dirty || email?.touched)) {
+                <div class="text-red-500 dark:text-red-400 text-sm mt-1">
+                  @if (email?.errors?.['required']) {
+                    <p>Email is required.</p>
+                  }
+                  @if (email?.errors?.['email']) {
+                    <p>Please enter a valid email address.</p>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+          <div class="mb-6">
+            <label for="message" class="block text-gray-600 dark:text-gray-300 font-medium mb-2">Message</label>
+            <textarea id="message" formControlName="message" rows="5" class="w-full bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg py-3 px-4 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" placeholder="Tell us about your project..."></textarea>
+             @if (message?.invalid && (message?.dirty || message?.touched)) {
+                <p class="text-red-500 dark:text-red-400 text-sm mt-1">A message is required.</p>
+              }
+          </div>
+          <div class="text-center">
+            <button type="submit" [disabled]="formStatus() === 'submitting'" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 px-12 rounded-lg text-lg transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+              @if (formStatus() === 'submitting') {
+                <span>Sending...</span>
+              } @else {
+                <span>Send Message</span>
+              }
+            </button>
+          </div>
+        </form>
+      }
+    </div>
+  </div>
+</section>

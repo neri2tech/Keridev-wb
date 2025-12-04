@@ -1,0 +1,21 @@
+<section class="py-20 bg-slate-50 dark:bg-slate-800">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12" appScrollAnimation>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white">Our Services</h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">We offer a comprehensive suite of digital services to bring your vision to life.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (service of services(); track service.title) {
+        <div appScrollAnimation class="group bg-white/60 dark:bg-slate-900/60 backdrop-blur-lg border border-slate-200 dark:border-slate-700 rounded-lg p-8 flex flex-col items-start transition-all duration-300 ease-in-out transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/20">
+          <div class="bg-slate-100 dark:bg-slate-800 p-3 rounded-full mb-4 text-indigo-500 dark:text-indigo-400 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors duration-300 ease-in-out" [innerHTML]="getSafeHtml(service.icon)">
+          </div>
+          <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-3">{{ service.title }}</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-base flex-grow">
+            {{ service.description }}
+          </p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

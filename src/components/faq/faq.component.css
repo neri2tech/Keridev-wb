@@ -1,0 +1,9 @@
+.answer-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+}
+
+.answer-panel.open {
+  max-height: 500px; /* Adjust as needed, should be larger than any possible answer content */
+}

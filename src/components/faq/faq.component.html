@@ -1,0 +1,26 @@
+<section class="py-20 bg-white dark:bg-slate-900" id="faq">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-12" appScrollAnimation>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white">Frequently Asked Questions</h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mt-4 max-w-2xl mx-auto">Have questions? We've got answers. If you can't find what you're looking for, feel free to contact us.</p>
+    </div>
+    
+    <div class="max-w-3xl mx-auto space-y-4" appScrollAnimation>
+      @for (faq of faqs(); track $index) {
+        <div class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+          <button (click)="toggleFaq($index)" class="w-full flex justify-between items-center text-left p-6 font-semibold text-lg text-slate-800 dark:text-white bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none transition-colors">
+            <span>{{ faq.question }}</span>
+            <span class="transform transition-transform duration-300" [class.rotate-45]="faq.open">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            </span>
+          </button>
+          <div class="answer-panel" [class.open]="faq.open">
+            <p class="p-6 text-gray-600 dark:text-gray-300">
+              {{ faq.answer }}
+            </p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
